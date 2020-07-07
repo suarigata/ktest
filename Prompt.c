@@ -2,7 +2,7 @@
  ============================================================================
  Name        : Prompt.c
  Author      : Alex Lucchesi
- Version     : 1.0000
+ Version     : 1.0001
  Copyright   : The Unlicense
  Description : Hello World in C, Ansi-style
  ============================================================================
@@ -90,12 +90,16 @@ void removel(char *arg){
   }
 }
 
+// XXX Please checkout c075177074c145fa6561853a039cdb19b16025a3 to get the 90 min test.
 void clear(){
-  Node *it = list;
-  list = NULL;
+  Node *it;
   
-  it = NULL; // TODO
-  // TODO free list
+  while(list){
+      it = list;
+      list = list->succ;
+      free(it);
+  }
+  list = NULL;
 }
 
 void first(){
@@ -116,27 +120,48 @@ void last(){
   }
 }
 
-
+// XXX Please checkout c075177074c145fa6561853a039cdb19b16025a3 to get the 90 min test.
 void sort(){
-  Node *new;
-  Node *it = list;
+  Node *new = NULL;
+  Node *old = list;
   
-  while(it){
+  while(old){
     if(!new){
-      new = it;
-      it = it->succ;
+      new = old;
+      old = old->succ;
       new->succ = NULL;
     }
-    else{ // TODO unfinished Thank you
-      Node *it2 = 
-      while(it2)
-        it2 = it2->succ;
+    else{
+      Node *it = old;
+      old = old->succ;
 
-      it = it->succ;
+      if(it->value < new->value){
+        it->succ = new;
+        new = it;
+      }
+      else{
+        Node *it2 = new;
+
+        while(it2->succ){
+          if(it->value < it2->succ->value){
+            it->succ = it2->succ;
+            it2->succ = it;
+            it = NULL;
+            break;
+          }
+          it2 = it2->succ;
+        }
+
+        if(it){
+          it2->succ = it;
+          it->succ = NULL;
+        }
+      }
     }
   }
   
   list = new;
+  listl();
 }
 
 
