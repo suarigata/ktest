@@ -117,6 +117,29 @@ void last(){
 }
 
 
+void sort(){
+  Node *new;
+  Node *it = list;
+  
+  while(it){
+    if(!new){
+      new = it;
+      it = it->succ;
+      new->succ = NULL;
+    }
+    else{ // TODO unfinished Thank you
+      Node *it2 = 
+      while(it2)
+        it2 = it2->succ;
+
+      it = it->succ;
+    }
+  }
+  
+  list = new;
+}
+
+
 void process_cmd(char *input){
 
   char cmd[7];
@@ -130,6 +153,7 @@ void process_cmd(char *input){
   if(strncmp(input, "clear", 5) == 0) clear();
   if(strncmp(input, "first", 5) == 0) first();
   if(strncmp(input, "last", 4) == 0) last();
+  if(strncmp(input, "sort", 4) == 0) sort();
 }
 
 
