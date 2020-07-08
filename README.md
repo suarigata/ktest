@@ -12,4 +12,4 @@ Thank you.
 1. 8ad1710cdbe2c7d80ebde94c4111868a0abea1de
 2. 
     * c075177074c145fa6561853a039cdb19b16025a3
-        * 80e58faf725adca98675d8674186fe2e5003105d (**completed after test**)
+    * 80e58faf725adca98675d8674186fe2e5003105d (**completed after test**)
